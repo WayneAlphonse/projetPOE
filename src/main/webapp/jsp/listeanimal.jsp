@@ -15,27 +15,6 @@
 <body>
 <h2>Choisis un animal parmi ceux présentés :</h2>
 
-<table>
-		<tr>
-			<th>Nom Couleur Gourmand Sportif Marmotte</th>
-		<!-- 	<th>Taux de gourmandise</th>
-			<th>Taux de sportif</th>
-			<th>Taux de marmotte</th> -->
-			<th>Image</th>
-		</tr>
-		<core:forEach var="animal" items="${ listeAnimals }">
-		
-		
-		<tr>
-			<td>${ animal.nom } ${animal.couleur } ${ animal.gourmand } ${ animal.sportif } ${ animal.marmotte } </td>
-			<%-- <td>${ animal.gourmand }</td>
-			<td>${ animal.sportif }</td>
-			<td>${ animal.marmotte }</td> --%>
-			
-	
-			</core:forEach>
-			
-			</table>
 
 <core:forEach var ="animal" items="${ listeAnimals }" >		
 		<div>
@@ -51,7 +30,7 @@
 		<p>Taux de marmotte</p>
 		<p>${animal.marmotte }</p>
 		
-		
+	<input type="submit" id="${animal.id}" value="Je choisis celui-ci !"/>
 		</div>	
 		
 		</core:forEach>
