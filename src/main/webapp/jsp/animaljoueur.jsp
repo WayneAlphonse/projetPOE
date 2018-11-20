@@ -14,5 +14,7 @@
 <body>
 <h1>Bienvenue ${ sessionScope.joueur.pseudo } sur la page de ton Animal !</h1>
 
+<img alt="" src=" ${animal.nomImage}" width="200">
+
 </body>
 </html>

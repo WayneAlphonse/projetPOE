@@ -29,8 +29,10 @@
 		<p>${animal.sportif }</p>
 		<p>Taux de marmotte</p>
 		<p>${animal.marmotte }</p>
-		
-	<input type="submit" id="${animal.id}" value="Je choisis celui-ci !"/>
+		<form action="animaljoueur" method="post">
+					<input type="hidden" name= "nomImage" value= "${animal.nomImage}"/>
+					<input type="submit" value="Je choisis celui-ci !"/>
+				</form>
 		</div>	
 		
 		</core:forEach>

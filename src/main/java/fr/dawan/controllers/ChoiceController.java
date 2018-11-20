@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.dawan.DAO.InterfaceAnimalDao;
-import fr.dawan.DAO.InterfaceDao;
+
 import fr.dawan.beans.Animal;
 import fr.dawan.beans.TypeAnimal;
 
@@ -29,4 +29,15 @@ public class ChoiceController {
 		return "listeanimal";
 	}
 
+	
+	@PostMapping("/animaljoueur")
+	public String redirectPlayerAnimal(Model model, @RequestParam("nomImage")String nomImage) {
+	
+		model.addAttribute("nomImage", nomImage);
+		
+		
+		
+		
+		return "animaljoueur";
+	}
 }
