@@ -7,9 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.dawan.DAO.InterfaceAnimalDao;
-import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.beans.Animal;
-import fr.dawan.beans.Chat;
+
 
 @Controller
 public class AnimalController {
