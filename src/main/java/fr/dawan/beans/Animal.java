@@ -4,6 +4,8 @@ package fr.dawan.beans;
 
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
@@ -20,6 +22,8 @@ public class Animal extends DbObject {
 	private int marmotte=100;
 	private String couleur;
 	private String nomImage;
+	@Enumerated(EnumType.STRING)
+	private TypeAnimal typeAnimal;
 //	@OneToMany
 //	private List<Jeux> listeDeJeux = new ArrayList<Jeux>();
 //	@OneToMany
@@ -103,6 +107,14 @@ public class Animal extends DbObject {
 
 	public void setNomImage(String nomImage) {
 		this.nomImage = nomImage;
+	}
+
+	public TypeAnimal getTypeAnimal() {
+		return typeAnimal;
+	}
+
+	public void setTypeAnimal(TypeAnimal typeAnimal) {
+		this.typeAnimal = typeAnimal;
 	}
 
 }

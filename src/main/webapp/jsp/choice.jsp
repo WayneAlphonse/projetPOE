@@ -19,10 +19,10 @@
 <form action="choice" method="post">
 
 <label for="choice1"><img src="https://www.wanimo.com/veterinaire/images/articles/chat/chaton-diarrhee.jpg" width="100"/></label>
-<input type="radio" name="choice1" id="choice1" />
+<input type="radio" name="typeAnimal" id="choice1" value="Chat" />
 
 <label for="choice2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQodZYm7zZkzdbFQ75q0APRjl6hBTk3fLtKlvQywMBuwN08CBCw" width="100"/></label>
-<input type="radio" name="choice1" id="choice2" />
+<input type="radio" name="typeAnimal" id="choice2" value="Chien" />
 
 <input type=submit value="J'ai choisi !"/>
 

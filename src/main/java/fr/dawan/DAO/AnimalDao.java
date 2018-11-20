@@ -9,11 +9,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import fr.dawan.beans.Animal;
+import fr.dawan.beans.TypeAnimal;
 
 @Transactional
-public class AnimalDao implements InterfaceDao<Animal> {
+public class AnimalDao implements InterfaceAnimalDao<Animal> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -34,6 +34,12 @@ public class AnimalDao implements InterfaceDao<Animal> {
 	public Animal findById(int id) {
 		
 		return null;
+	}
+	public List<Animal> findByEnum(TypeAnimal typeAnimal) {
+	Session session = sessionFactory.getCurrentSession();
+	TypedQuery<Animal> query = session
+			.createQuery("SELECT entity FROM Animal entity WHERE entity.typeAnimal='" + typeAnimal + "'", Animal.class);
+	return query.getResultList();
 	}
 
 	@Override

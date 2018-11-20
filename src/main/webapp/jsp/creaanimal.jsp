@@ -1,6 +1,9 @@
+<%@page import="fr.dawan.beans.TypeAnimal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <base href="<%=request.getScheme() + "://"
@@ -29,6 +32,15 @@
 	<label for="couleur">Couleur :</label>
 	<input type="text" name="couleur" id="couleur"/>
 	<br>
+	<label for="typeAnimal">Type de l'animal :</label>
+	<select name="typeAnimal">
+	<core:forEach var= "typeAnimal" items="<%=TypeAnimal.values() %>"> 
+	 <option value="${ typeAnimal}">${typeAnimal } </option>
+	
+	</core:forEach>
+	
+	</select>
+	
 
 	<input type="submit" value="Créer !"/>
 	
