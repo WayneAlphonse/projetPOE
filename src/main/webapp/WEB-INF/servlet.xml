@@ -18,6 +18,7 @@
 	
 	<bean id="hibernateDao" class="fr.dawan.DAO.JoueurDao"></bean>
 	<bean id="hibernateDao2" class="fr.dawan.DAO.AnimalDao"></bean>
+	<bean id="hibernateDao3" class="fr.dawan.DAO.JeuxDao"></bean>
 	
 	
 	<bean id="dataSourceMySQL" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

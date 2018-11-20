@@ -6,9 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import fr.dawan.DAO.InterfaceAnimalDao;
-
 import fr.dawan.beans.Animal;
 import fr.dawan.beans.TypeAnimal;
 
