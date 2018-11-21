@@ -10,25 +10,23 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.dawan.beans.Jeux;
-
+import fr.dawan.beans.Joueur;
 
 @Transactional
-public class JeuxDao implements InterfaceDao<Jeux>{
+public class JeuxDao implements InterfaceJeuxDao<Jeux> {
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public Jeux createOrUpdate(Jeux item) {
 		Session session = sessionFactory.getCurrentSession();
-		if(item.getId()==null) {
-		session.persist(item);
-		}else {
+		if (item.getId() == null) {
+			session.persist(item);
+		} else {
 			session.merge(item);
 		}
 		return item;
 	}
-
-	
 
 	@Override
 	public List<Jeux> findAll() {
@@ -37,22 +35,25 @@ public class JeuxDao implements InterfaceDao<Jeux>{
 		return query.getResultList();
 	}
 
-
-
 	@Override
 	public Jeux findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public Jeux findByTypeJeux(String typeJeux) {
 
+		Session session = sessionFactory.getCurrentSession();
+		TypedQuery<Jeux> query = session
+				.createQuery("SELECT entity FROM Jeux entity WHERE entity.typeJeux='" + typeJeux + "'", Jeux.class);
+		return query.getSingleResult();
+
+	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 }

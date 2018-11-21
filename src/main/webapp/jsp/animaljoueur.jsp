@@ -17,17 +17,17 @@
 
 <img alt="" src=" ${animal.nomImage}" width="200">
 
-
+<form action="calculjeu" method="post">
 <p>Choisis un jeu :</p>
-<select name="jeux">
+<select name="typeJeux">
 <core:forEach var="jeux" items="${ listeJeux }">
 <option>${ jeux.typeJeux }</option>
 </core:forEach>
 </select>
 
-<form action="" method="post">
 <label for="dureeJeux">Pendant combien de temps veux-tu jouer avec ${ animal.nom } ?</label>
-<input type="number" name="dureeJeux" id="dureeJeux" step="10" min="10" max="1000">minutes
+<input type="number" name="dureeJeux" id="dureeJeux" step="10" min="10" max="1000" required>minutes
+<input type="submit" value="Jouer !">
 </form>
 
 <p>Choisis un lieu pour faire dormir ton animal :</p>
@@ -55,7 +55,7 @@
 </form>
 
 
-
+${msg1 }
 ${msg }
 
 </body>
