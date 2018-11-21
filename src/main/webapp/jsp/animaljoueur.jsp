@@ -28,7 +28,8 @@
 <form action="" method="post">
 <label for="dureeJeux">Pendant combien de temps veux-tu jouer ?</label>
 <input type="number" name="dureeJeux" id="dureeJeux" step="10">
-</form>
+</form> 
+
 
 ${msg }
 
