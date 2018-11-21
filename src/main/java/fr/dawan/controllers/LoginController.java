@@ -30,11 +30,11 @@ public class LoginController {
 //	}
 
 	@PostMapping(value = "/inscription", params = { "pseudo" })
-	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo) {
+	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, HttpSession session) {
 		model.addAttribute("pseudo", pseudo);
 
 		joueur = dao.createOrUpdate(joueur);
-
+		session.setAttribute("joueur", joueur);
 		return "choice";
 	}
 

@@ -30,7 +30,7 @@
 		<p>Taux de marmotte</p>
 		<p>${animal.marmotte }</p>
 		<form action="animaljoueur" method="post">
-					<input type="hidden" name= "nomImage" value= "${animal.nomImage}"/>
+					<input type="hidden" name= "id" value= "${animal.id}"/>
 					<input type="submit" value="Je choisis celui-ci !"/>
 				</form>
 		</div>	
