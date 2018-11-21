@@ -26,9 +26,34 @@
 </select>
 
 <form action="" method="post">
-<label for="dureeJeux">Pendant combien de temps veux-tu jouer ?</label>
-<input type="number" name="dureeJeux" id="dureeJeux" step="10">
-</form> 
+<label for="dureeJeux">Pendant combien de temps veux-tu jouer avec ${ animal.nom } ?</label>
+<input type="number" name="dureeJeux" id="dureeJeux" step="10" min="10" max="1000">minutes
+</form>
+
+<p>Choisis un lieu pour faire dormir ton animal :</p>
+<select name="dodo">
+<core:forEach var="dodo" items="${ listeDodo }">
+<option>${ dodo.lieu }</option>
+</core:forEach>
+</select>
+
+<form action="" method="post">
+<label for="dureeDodo">Pendant combien de temps veux-tu faire dormir ton animal ?</label>
+<input type="number" name="dureeDodo" id="dureeDodo" min="1" max="24">heure(s)
+</form>
+
+<p>Choisis quelle nourriture ton animal va manger :</p>
+<select name="nourriture">
+<core:forEach var="nourriture" items="${ listeNourriture }">
+<option>${ nourriture.typeNourriture }</option>
+</core:forEach>
+</select>
+
+<form action="" method="post">
+<label for="quantiteNourriture">Quelle quantité souhaites-tu donner à ton animal ?</label>
+<input type="number" name="quantiteNourriture" id="quantiteNourriture" min="1" max="1000">
+</form>
+
 
 
 ${msg }
