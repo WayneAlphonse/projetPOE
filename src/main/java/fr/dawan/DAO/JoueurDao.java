@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import fr.dawan.beans.Animal;
 import fr.dawan.beans.Joueur;
 
 @Transactional
@@ -43,6 +43,8 @@ public class JoueurDao implements InterfaceJoueurDao<Joueur> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
 
 	@Override
 	public List<Joueur> findAll() {

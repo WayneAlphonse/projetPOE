@@ -3,6 +3,7 @@ package fr.dawan.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.DAO.InterfaceJoueurDao;
+import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private InterfaceJoueurDao<Joueur> dao;
+	
+	@Autowired
+	@Qualifier("hibernateDao3")
+	private InterfaceDao<Jeux> jeuxDao;
 	
 
 //	@PostMapping(value="/login", params= {"pseudo"})
@@ -45,16 +52,15 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")	
-	public ModelAndView checkLogin(Joueur joueur, HttpSession session) {
+	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model) {
 		String returnUrl = "login";
 		Joueur joueurFromDb = dao.findByEmail(joueur.getEmail());
-		
-
 		if (joueurFromDb != null && joueur.getEmail() != null && joueur.getPassword() != null && joueur.getEmail() != ""
 				&& joueur.getPassword() != "" && joueur.getPassword().equals(joueurFromDb.getPassword())) {
 			session.setAttribute("joueur", joueurFromDb);
 			System.out.println(joueurFromDb.getPseudo());
-
+			model.addAttribute("animal", joueurFromDb.getAnimal());
+			model.addAttribute("listeJeux", jeuxDao.findAll());
 			returnUrl = "/animaljoueur";
 		}
 
