@@ -15,7 +15,7 @@ import fr.dawan.beans.Dodo;
 
 
 @Transactional
-public class DodoDao implements InterfaceDao<Dodo>{
+public class DodoDao implements InterfaceDodoDao<Dodo>{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -38,6 +38,7 @@ public class DodoDao implements InterfaceDao<Dodo>{
 		return query.getResultList();
 	}
 	
+	
 	@Override
 	public Dodo findById(int id) {
 		// TODO Auto-generated method stub
@@ -47,6 +48,13 @@ public class DodoDao implements InterfaceDao<Dodo>{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Dodo findByLieu(String lieu) {
+		Session session = sessionFactory.getCurrentSession();	
+		TypedQuery<Dodo> query = session.createQuery("SELECT entity FROM Dodo entity WHERE entity.lieu='" + lieu + "'", Dodo.class);
+		return query.getSingleResult();
 	}
 
 }

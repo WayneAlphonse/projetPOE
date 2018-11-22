@@ -10,7 +10,7 @@ public class Joueur extends DbObject {
 	private String pseudo;
 	private String email;
 	private String password;
-	private int age;
+	private int age = 0;
 	@OneToOne
 	private Animal animal;
 
