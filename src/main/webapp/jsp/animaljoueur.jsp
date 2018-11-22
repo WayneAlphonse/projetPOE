@@ -44,7 +44,7 @@
 
 <form action="calculnourriture" method="post">
 <p>Choisis quelle nourriture ton animal va manger :</p>
-<select name="nourriture">
+<select name="typeNourriture">
 <core:forEach var="nourriture" items="${ listeNourriture }">
 <option>${ nourriture.typeNourriture }</option>
 </core:forEach>

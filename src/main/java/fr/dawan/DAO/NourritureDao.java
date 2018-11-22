@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.dawan.beans.Nourriture;
 
 @Transactional
-public class NourritureDao implements InterfaceDao<Nourriture> {
+public class NourritureDao implements InterfaceNourritureDao<Nourriture> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -47,4 +47,13 @@ public class NourritureDao implements InterfaceDao<Nourriture> {
 
 	}
 
+	@Override
+	public Nourriture findByTypeNourriture(String typeNourriture) {
+		Session session = sessionFactory.getCurrentSession();
+		TypedQuery<Nourriture> query = session.createQuery("SELECT entity FROM Nourriture entity WHERE entity.typeNourriture='" + typeNourriture + "'", Nourriture.class);
+		return query.getSingleResult();
+	
+	}
+
+	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.DAO.InterfaceDodoDao;
 import fr.dawan.DAO.InterfaceJeuxDao;
+import fr.dawan.DAO.InterfaceNourritureDao;
 import fr.dawan.beans.Animal;
 import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
@@ -30,8 +31,8 @@ public class CalculController {
 
 	@Autowired
 	@Qualifier("hibernateDao5")
-	private InterfaceDao<Nourriture> nourritureDao;
-	
+	private InterfaceNourritureDao<Nourriture> nourritureDao;
+
 	@PostMapping("/calculjeu")
 	public String calculPlay(Model model, HttpSession session, @RequestParam("typeJeux") String typeJeux,
 			@RequestParam("dureeJeux") Integer dureeJeux) {
@@ -47,7 +48,7 @@ public class CalculController {
 				model.addAttribute("msg", (joueur.getAnimal().getNom()) + " est très heureux d'avoir joué avec toi !");
 			} else {
 
-				model.addAttribute("msg1", (joueur.getAnimal().getNom()) + " aimerait jouer encore avec toi !");
+				model.addAttribute("msg", (joueur.getAnimal().getNom()) + " aimerait jouer encore avec toi !");
 			}
 
 			model.addAttribute("listeJeux", jeuDao.findAll());
@@ -69,7 +70,7 @@ public class CalculController {
 			model.addAttribute("animal", joueur.getAnimal());
 
 			Animal animal = joueur.getAnimal();
-		
+
 			int dodoresultat = dureeDodo * dodo.getTauxSommeil();
 
 			if (dodoresultat >= animal.getMarmotte()) {
@@ -83,6 +84,32 @@ public class CalculController {
 			model.addAttribute("listeJeux", jeuDao.findAll());
 			model.addAttribute("listeDodo", dodoDao.findAll());
 			model.addAttribute("listeNourriture", nourritureDao.findAll());
+		}
+
+		return "animaljoueur";
+
+	}
+
+	@PostMapping("/calculnourriture")
+	public String calculFood(@RequestParam("quantiteNourriture") Integer quantiteNourriture, Model model,
+			@RequestParam("typeNourriture") String typeNourriture, HttpSession session) {
+		Nourriture nourriture = nourritureDao.findByTypeNourriture(typeNourriture);
+		Object joueurSession = session.getAttribute("joueur");
+		if (joueurSession != null) {
+			Joueur joueur = (Joueur) joueurSession;
+			Animal animal = joueur.getAnimal();
+			model.addAttribute("animal", animal);
+
+			int nourritureResultat = quantiteNourriture * nourriture.getTauxSatiete();
+			if (nourritureResultat >= animal.getGourmand()) {
+				model.addAttribute("msg", animal.getNom() + "s'est régalé et a repris des forces ! ");
+			} else {
+				model.addAttribute("msg", animal.getNom() + "a encore faim...");
+			}
+			model.addAttribute("listeJeux", jeuDao.findAll());
+			model.addAttribute("listeDodo", dodoDao.findAll());
+			model.addAttribute("listeNourriture", nourritureDao.findAll());
+
 		}
 
 		return "animaljoueur";
