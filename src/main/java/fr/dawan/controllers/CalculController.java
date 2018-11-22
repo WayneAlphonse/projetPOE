@@ -63,6 +63,7 @@ public class CalculController {
 		Object joueurSession = session.getAttribute("joueur");
 		if (joueurSession != null) {
 			Joueur joueur = (Joueur) joueurSession;
+			
 			Animal animal = joueur.getAnimal();
 			Object dureeDodoSession = session.getAttribute("dureeDodo");
 			int dodoresultat = (Integer) dureeDodoSession * dodo.getTauxSommeil();
