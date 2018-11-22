@@ -51,6 +51,8 @@ public class CalculController {
 			}
 
 			model.addAttribute("listeJeux", jeuDao.findAll());
+			model.addAttribute("listeDodo", dodoDao.findAll());
+			model.addAttribute("listeNourriture", nourritureDao.findAll());
 		}
 		return "animaljoueur";
 	}
@@ -63,9 +65,10 @@ public class CalculController {
 		Object joueurSession = session.getAttribute("joueur");
 		if (joueurSession != null) {
 			Joueur joueur = (Joueur) joueurSession;
+			model.addAttribute("animal", joueur.getAnimal());
 			Animal animal = joueur.getAnimal();
-			Object dureeDodoSession = session.getAttribute("dureeDodo");
-			int dodoresultat = (Integer) dureeDodoSession * dodo.getTauxSommeil();
+		
+			int dodoresultat = dureeDodo * dodo.getTauxSommeil();
 
 			if (dodoresultat >= animal.getMarmotte()) {
 				model.addAttribute("msg", animal.getNom() + "a bien dormi et en forme pour la journée!");
