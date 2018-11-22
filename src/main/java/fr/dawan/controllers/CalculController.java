@@ -19,6 +19,7 @@ public class CalculController {
 	@Autowired
 	@Qualifier("hibernateDao3")
 	private InterfaceJeuxDao<Jeux> jeuDao;
+	
 
 	@PostMapping("/calculjeu")
 	public String calculPlay(Model model, HttpSession session, @RequestParam("typeJeux") String typeJeux,
@@ -37,6 +38,8 @@ public class CalculController {
 
 				model.addAttribute("msg1", (joueur.getAnimal().getNom()) + " aimerait jouer encore avec toi !");
 			}
+			
+			model.addAttribute("listeJeux", jeuDao.findAll());
 		}
 		return "animaljoueur";
 	}
