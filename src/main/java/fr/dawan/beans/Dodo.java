@@ -3,8 +3,10 @@ package fr.dawan.beans;
 import javax.persistence.Entity;
 
 @Entity
+
 public class Dodo extends DbObject {
 	private int tauxSommeil = 0;
+
 	private String lieu;
 
 	public Dodo() {
