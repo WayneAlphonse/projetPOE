@@ -102,9 +102,9 @@ public class CalculController {
 
 			int nourritureResultat = quantiteNourriture * nourriture.getTauxSatiete();
 			if (nourritureResultat >= animal.getGourmand()) {
-				model.addAttribute("msg", animal.getNom() + "s'est régalé et a repris des forces ! ");
+				model.addAttribute("msg", animal.getNom() + " s'est régalé et a repris des forces ! ");
 			} else {
-				model.addAttribute("msg", animal.getNom() + "a encore faim...");
+				model.addAttribute("msg", animal.getNom() + " a encore faim...");
 			}
 			model.addAttribute("listeJeux", jeuDao.findAll());
 			model.addAttribute("listeDodo", dodoDao.findAll());
