@@ -4,11 +4,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class Nourriture extends DbObject{
-	private int tauxSatiete;
+	private int tauxSatiete=0;
 	private String typeNourriture;
-	private int quantite;
-	
-	
+
 	
 	public Nourriture() {
 	
@@ -26,13 +24,7 @@ public class Nourriture extends DbObject{
 	public void setTypeNourriture(String typeNourriture) {
 		this.typeNourriture = typeNourriture;
 	}
-	public int getQuantite() {
-		return quantite;
-	}
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
-	}
-	
+
 	
 
 }

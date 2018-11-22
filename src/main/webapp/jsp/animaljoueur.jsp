@@ -32,7 +32,7 @@
 
 <form action="calculdodo" method="post">
 <p>Choisis un lieu pour faire dormir ton animal :</p>
-<select name="dodo">
+<select name="lieu">
 <core:forEach var="dodo" items="${ listeDodo }">
 <option>${ dodo.lieu }</option>
 </core:forEach>
