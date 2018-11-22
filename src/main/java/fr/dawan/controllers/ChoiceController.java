@@ -13,8 +13,10 @@ import fr.dawan.DAO.InterfaceAnimalDao;
 import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.DAO.InterfaceJoueurDao;
 import fr.dawan.beans.Animal;
+import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
+import fr.dawan.beans.Nourriture;
 import fr.dawan.beans.TypeAnimal;
 
 @Controller
@@ -29,6 +31,12 @@ public class ChoiceController {
 	@Autowired
 	@Qualifier("hibernateDao3")
 	private InterfaceDao<Jeux> jeuxDao;
+	@Autowired
+	@Qualifier("hibernateDao5")
+	private InterfaceDao<Nourriture> nourritureDao;
+	@Autowired
+	@Qualifier("hibernateDao4")
+	private InterfaceDao<Dodo> dodoDao;
 
 	@PostMapping(value = "/choice")
 	public String redirectListAnimal(Model model, @RequestParam("typeAnimal") TypeAnimal typeAnimal) {
@@ -40,11 +48,13 @@ public class ChoiceController {
 
 	@PostMapping("/animaljoueur")
 	public String redirectPlayerAnimal(Model model, @RequestParam("id") int id, HttpSession session) {
-		//avec l'id récuperée depuis la page précedente, on retrouve l'animal correspondant
+		// avec l'id récuperée depuis la page précedente, on retrouve l'animal
+		// correspondant
 		Animal animal = daoAnimal.findById(id);
-		//on le met dans un model afin de pouvoir afficher les attributs de mon objet dans ma page jsp
+		// on le met dans un model afin de pouvoir afficher les attributs de mon objet
+		// dans ma page jsp
 		model.addAttribute("animal", animal);
-		//depuis la session on recupère le joueur inscrit
+		// depuis la session on recupère le joueur inscrit
 		Object joueurObj = session.getAttribute("joueur");
 //on verifie que le joueur existe dejà et on lui lie l'animal qu'on a recuperé avec l'id, on update notre base de données
 		if (joueurObj != null) {
@@ -52,6 +62,8 @@ public class ChoiceController {
 			joueur.setAnimal(animal);
 			daoJoueur.createOrUpdate(joueur);
 		}
+		model.addAttribute("listeNourriture", nourritureDao.findAll());
+		model.addAttribute("listeDodo", dodoDao.findAll());
 		model.addAttribute("listeJeux", jeuxDao.findAll());
 		System.out.println(jeuxDao.findAll().size());
 

@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.DAO.InterfaceJoueurDao;
+import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
+import fr.dawan.beans.Nourriture;
 
 @Controller
 public class LoginController {
@@ -24,6 +26,14 @@ public class LoginController {
 	@Autowired
 	@Qualifier("hibernateDao3")
 	private InterfaceDao<Jeux> jeuxDao;
+	
+	@Autowired
+	@Qualifier("hibernateDao5")
+	private InterfaceDao<Nourriture> nourritureDao;
+	
+	@Autowired
+	@Qualifier("hibernateDao4")
+	private InterfaceDao<Dodo> dodoDao;
 	
 
 //	@PostMapping(value="/login", params= {"pseudo"})
@@ -60,6 +70,8 @@ public class LoginController {
 			session.setAttribute("joueur", joueurFromDb);
 			System.out.println(joueurFromDb.getPseudo());
 			model.addAttribute("animal", joueurFromDb.getAnimal());
+			model.addAttribute("listeNourriture", nourritureDao.findAll() );
+			model.addAttribute("listeDodo", dodoDao.findAll());
 			model.addAttribute("listeJeux", jeuxDao.findAll());
 			returnUrl = "/animaljoueur";
 		}
