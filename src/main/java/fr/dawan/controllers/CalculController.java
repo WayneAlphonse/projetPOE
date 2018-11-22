@@ -18,6 +18,7 @@ import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
 import fr.dawan.beans.Nourriture;
+import fr.dawan.utils.Constantes;
 
 @Controller
 public class CalculController {
@@ -45,10 +46,10 @@ public class CalculController {
 			int resultTauxJeux = jeux.getTauxBonheur() * dureeJeux;
 			if (resultTauxJeux >= (joueur.getAnimal().getSportif())) {
 
-				model.addAttribute("msg", (joueur.getAnimal().getNom()) + " est très heureux d'avoir joué avec toi !");
+				model.addAttribute("msg", (joueur.getAnimal().getNom()) + Constantes.HAPPY_PLAYER);
 			} else {
 
-				model.addAttribute("msg", (joueur.getAnimal().getNom()) + " aimerait jouer encore avec toi !");
+				model.addAttribute("msg", (joueur.getAnimal().getNom()) + Constantes.SAD_PLAYER);
 			}
 
 			model.addAttribute("listeJeux", jeuDao.findAll());
@@ -74,12 +75,12 @@ public class CalculController {
 			int dodoresultat = dureeDodo * dodo.getTauxSommeil();
 
 			if (dodoresultat >= animal.getMarmotte()) {
-				model.addAttribute("msg", animal.getNom() + "a bien dormi et en forme pour la journée!");
+				model.addAttribute("msg", animal.getNom() + Constantes.HAPPY_SLEEPER);
 
 			}
 
 			else {
-				model.addAttribute("msg", animal.getNom() + "est encore fatigué...");
+				model.addAttribute("msg", animal.getNom() + Constantes.SAD_SLEEPER);
 			}
 			model.addAttribute("listeJeux", jeuDao.findAll());
 			model.addAttribute("listeDodo", dodoDao.findAll());
@@ -102,9 +103,9 @@ public class CalculController {
 
 			int nourritureResultat = quantiteNourriture * nourriture.getTauxSatiete();
 			if (nourritureResultat >= animal.getGourmand()) {
-				model.addAttribute("msg", animal.getNom() + " s'est régalé et a repris des forces ! ");
+				model.addAttribute("msg", animal.getNom() + Constantes.HAPPY_EATER);
 			} else {
-				model.addAttribute("msg", animal.getNom() + " a encore faim...");
+				model.addAttribute("msg", animal.getNom() + Constantes.SAD_EATER);
 			}
 			model.addAttribute("listeJeux", jeuDao.findAll());
 			model.addAttribute("listeDodo", dodoDao.findAll());

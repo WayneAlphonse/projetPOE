@@ -10,6 +10,7 @@ import fr.dawan.DAO.InterfaceDao;
 import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Nourriture;
+import fr.dawan.utils.Constantes;
 
 @Controller
 public class ArtefactController {
@@ -32,7 +33,7 @@ public class ArtefactController {
 	@PostMapping("/creajeux")
 	public String createGame(Jeux jeux, Model model) {
 		jeuDao.createOrUpdate(jeux);
-		model.addAttribute("msg", "Jouet crée!");
+		model.addAttribute("msg", Constantes.JOUET_CREE);
 
 		return "animaljoueur";
 	}
@@ -40,7 +41,7 @@ public class ArtefactController {
 	@PostMapping("/creadodo")
 	public String createSleep(Dodo dodo, Model model) {
 		dodoDao.createOrUpdate(dodo);
-		model.addAttribute("msg", "Dodo crée!");
+		model.addAttribute("msg", Constantes.DODO_CREE);
 
 		return "animaljoueur";
 	}
@@ -48,7 +49,7 @@ public class ArtefactController {
 	@PostMapping("/creanourriture")
 	public String createFood(Nourriture nourriture, Model model) {
 		nourritureDao.createOrUpdate(nourriture);
-		model.addAttribute("msg", "Nourriture crée!");
+		model.addAttribute("msg", Constantes.NOURRITURE_CREE);
 
 		return "animaljoueur";
 	}

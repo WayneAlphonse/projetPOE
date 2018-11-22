@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.dawan.DAO.InterfaceAnimalDao;
 import fr.dawan.beans.Animal;
+import fr.dawan.utils.Constantes;
 
 
 @Controller
@@ -21,10 +22,10 @@ public class AnimalController {
 
 		daoAnimal.createOrUpdate(animal);
 		model.addAttribute("listeAnimals", daoAnimal.findAll());
-		model.addAttribute("msg", "Animal ajouté !");
+		model.addAttribute("msg", Constantes.ANIMAL_AJOUTE);
 
 		return "listeanimal";
-
+ 
 	}
 
 }
