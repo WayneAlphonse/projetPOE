@@ -54,8 +54,6 @@
 <input type="submit" value="Manger!">
 </form>
 
-
-${msg1 }
 ${msg }
 
 </body>

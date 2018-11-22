@@ -22,29 +22,18 @@ import fr.dawan.beans.Nourriture;
 public class LoginController {
 	@Autowired
 	private InterfaceJoueurDao<Joueur> dao;
-	
+
 	@Autowired
 	@Qualifier("hibernateDao3")
 	private InterfaceDao<Jeux> jeuxDao;
-	
+
 	@Autowired
 	@Qualifier("hibernateDao5")
 	private InterfaceDao<Nourriture> nourritureDao;
-	
+
 	@Autowired
 	@Qualifier("hibernateDao4")
 	private InterfaceDao<Dodo> dodoDao;
-	
-
-//	@PostMapping(value="/login", params= {"pseudo"})
-//	
-//	public String showChoice(Model model, @RequestParam String pseudo){
-//			model.addAttribute("pseudo", pseudo);
-//			
-//			
-//		
-//		return "choice";
-//	}
 
 	@PostMapping(value = "/inscription", params = { "pseudo" })
 	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, HttpSession session) {
@@ -58,10 +47,10 @@ public class LoginController {
 	@GetMapping("/login")
 	public String showLogin() {
 		return "login";
-		
+
 	}
-	
-	@PostMapping("/login")	
+
+	@PostMapping("/login")
 	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model) {
 		String returnUrl = "login";
 		Joueur joueurFromDb = dao.findByEmail(joueur.getEmail());
@@ -70,7 +59,7 @@ public class LoginController {
 			session.setAttribute("joueur", joueurFromDb);
 			System.out.println(joueurFromDb.getPseudo());
 			model.addAttribute("animal", joueurFromDb.getAnimal());
-			model.addAttribute("listeNourriture", nourritureDao.findAll() );
+			model.addAttribute("listeNourriture", nourritureDao.findAll());
 			model.addAttribute("listeDodo", dodoDao.findAll());
 			model.addAttribute("listeJeux", jeuxDao.findAll());
 			returnUrl = "/animaljoueur";
@@ -78,20 +67,19 @@ public class LoginController {
 
 		return new ModelAndView(returnUrl);
 	}
-	
+
 	public String MD5(String md5) {
-		   try {
-		        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-		        byte[] array = md.digest(md5.getBytes());
-		        StringBuffer sb = new StringBuffer();
-		        for (int i = 0; i < array.length; ++i) {
-		          sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-		       }
-		        return sb.toString();
-		    } catch (java.security.NoSuchAlgorithmException e) {
-		    }
-		    return null;
+		try {
+			java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+			byte[] array = md.digest(md5.getBytes());
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < array.length; ++i) {
+				sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+			}
+			return sb.toString();
+		} catch (java.security.NoSuchAlgorithmException e) {
 		}
+		return null;
+	}
 
 }
-
