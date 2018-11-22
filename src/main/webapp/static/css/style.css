@@ -1,4 +1,22 @@
-h2 {
-    color: Red;
-}
 
+
+
+
+.titreH2{
+	color:#800000;
+	text-align: center;
+	font-size: 64px;
+}
+.formInscription{
+	text-align:center;
+	
+}
+.bg{
+	color:#c9bbb8;
+	text-align: center;
+	font-size: 40px;
+	background-image: url(img/chatchien.jpg);
+	height: 800px;
+	background-position :bottom;
+	background-repeat: no-repeat;
+}

@@ -11,12 +11,16 @@
 		+ request.getServerPort()
 		+ request.getContextPath() + "/"
 		%>" />
+		
+		<link rel="stylesheet" href="css/style.css" type="text/css"/>
 </head>
-<body>
-<h1>Bienvenue sur notre site !</h1>
-<h2>Inscris-toi!</h2>
 
-<form method="post" action="inscription">
+<body>
+<div class="bg"><h1 class="titreH1">TAMAGOCHI</h1></div>
+
+<h2 class="titreH2">Inscris-toi!</h2>
+
+<form class="formInscription" method="post" action="inscription">
 	<label for="nom">Nom:</label>
 	<input type="text" name="nom" id="nom"/>
 	<br>
@@ -40,9 +44,11 @@
 	<input type="submit" value="Valider"/>
 	<br>
 </form>
+
+
 <form action="login" method="get">
 	Déjà inscrit ?
 	<input type="submit" value="Connecte-toi!"/>
-	</form>
+</form>
 </body>
 </html>
