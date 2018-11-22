@@ -2,6 +2,7 @@ package fr.dawan.utils;
 
 public class Constantes {
 
+
 	public static final String ANIMAL_AJOUTE = "Animal ajouté !";
 	public static final String JOUET_CREE = "Jouet crée!";
 	public static final String DODO_CREE = "Dodo crée!";
@@ -16,4 +17,5 @@ public class Constantes {
 	
 	
 	
+
 }

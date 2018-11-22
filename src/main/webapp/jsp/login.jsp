@@ -8,7 +8,10 @@
 		+ request.getServerPort()
 		+ request.getContextPath() + "/"
 		%>" />
+		
+	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 <meta charset="ISO-8859-1">
+
 <title>login</title>
 </head>
 <body>

@@ -22,13 +22,10 @@ public class ArtefactController {
 	@Autowired
 	@Qualifier("hibernateDao4")
 	private InterfaceDao<Dodo> dodoDao;
-	
-	
+
 	@Autowired
 	@Qualifier("hibernateDao5")
 	private InterfaceDao<Nourriture> nourritureDao;
-
-	
 
 	@PostMapping("/creajeux")
 	public String createGame(Jeux jeux, Model model) {
