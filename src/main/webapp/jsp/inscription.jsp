@@ -18,9 +18,11 @@
 <body>
 <div class="bg"><h1 class="titreH1">TAMAGOCHI</h1></div>
 
-<h2 class="titreH2">Inscris-toi!</h2>
+
+<div class="divInscription">
 
 <form class="formInscription" method="post" action="inscription">
+<h2 class="titreH2">Inscris-toi!</h2>
 	<label for="nom">Nom:</label>
 	<input type="text" name="nom" id="nom"/>
 	<br>
@@ -41,14 +43,13 @@
 	<label for="age">Age:</label>
 	<input type="number" name="age" id="age"/>	
 	<br>
-	<input type="submit" value="Valider"/>
-	<br>
+	<input type="submit" value="Valider" class="boutonValid"/>
 </form>
-
-
-<form action="login" method="get">
+<form action="login" method="get" class="formLogin">
 	Déjà inscrit ?
-	<input type="submit" value="Connecte-toi!"/>
-</form>
+	<input type="submit" value="Connecte-toi!" class="buttonLogin"/>
+	</form>
+</div>
+	
 </body>
 </html>
