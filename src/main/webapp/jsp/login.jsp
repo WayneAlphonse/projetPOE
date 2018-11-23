@@ -9,26 +9,27 @@
 		+ request.getContextPath() + "/"
 		%>" />
 		
-	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/styleLogin.css" type="text/css"/>
 <meta charset="ISO-8859-1">
 
 <title>login</title>
 </head>
 <body>
-<h2>Connecte-toi !</h2>
 
-<form action="login" method="post">
-	<label for="email">email :</label>
-	<input type="email" name="email" id="email"/>
-	<br>
-	<label for="password">mot de passe :</label>
-	<input type="password" name="password" id="password"/>
-	<br>
-	<input type="submit" value="Connecte-toi !"/>
+<p class="texto">Connecte-toi !</p>
+<div class="Registro">
+<form method="post" action="https://getform.org/f/70415a77-d632-4883-bf07-2e15d3f557da">
 
 
+<span class="fontawesome-envelope-alt"></span><input type="text" id="email" required placeholder="Email" autocomplete="off">
+<span class="fontawesome-lock"></span><input type="password" name="password" id="password" required placeholder="Password" autocomplete="off"> 
+		<input type="submit" value="Valider"/>
 </form>
+
+
 
 
 </body>
 </html>
+
+

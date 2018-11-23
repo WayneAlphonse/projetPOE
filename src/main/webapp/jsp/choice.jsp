@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<h1>Choisis ton animal: ${ pseudo }</h1>
+<h1> ${ pseudo }, choisis ton animal: </h1>
 <h2></h2>
 
 <form action="choice" method="post">
