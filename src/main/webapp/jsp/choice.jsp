@@ -9,6 +9,7 @@
 		+ request.getContextPath() + "/"
 		%>" />
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/styleChoice.css" type="text/css" />
 <title>Choice</title>
 
 </head>
