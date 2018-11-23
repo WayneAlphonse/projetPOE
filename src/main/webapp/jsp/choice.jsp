@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<h1> ${ pseudo } Bienvenu sur notre site ! Choisis ton animal: </h1>
+<h1> ${ pseudo }, choisis ton animal: </h1>
 <h2></h2>
 
 <form action="choice" method="post">
