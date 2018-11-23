@@ -19,19 +19,18 @@ label{
 	
 }
 .formLogin{
-	text-align: right;
+	text-align: right, inherit;
 	color:#ad4703;
-	font-size: 20px;
+	font-size: 40px;
+	font-weight: bold;
 	
 }
 
 .formInscription{
 	background-color :#e7e3e2 ;
-	height : 330px;
+	height : 245px;
 	margin : 50px,50px,50px,50px;
 	text-align: center;
-	
-
 }
 
 .boutonValid{
@@ -58,4 +57,10 @@ label{
 	border-radius: 10px;
 	font-size: 15px;
 	font-weight: bold;
+}
+
+.formInscription input{
+	
+	border-radius: 10px;
+	height: 20px;
 }

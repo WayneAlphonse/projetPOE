@@ -23,25 +23,17 @@
 
 <form class="formInscription" method="post" action="inscription">
 <h2 class="titreH2">Inscris-toi!</h2>
-	<label for="nom">Nom:</label>
-	<input type="text" name="nom" id="nom"/>
+	<input type="text" name="nom" id="nom" placeholder="Nom :"/>
 	<br>
-	
-	<label for="prenom">Prénom:</label>
-	<input type="text" name="prenom" id="prenom"/>
+	<input type="text" name="prenom" id="prenom" placeholder="Prénom :"/>
 	<br>
-	
-	<label for="pseudo">Pseudo:</label>
-	<input type="text" name="pseudo" id="pseudo"/>
+	<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo :"/>
 	<br>
-	<label for="email">Email:</label>
-	<input type="email" name="email" id="email" />
+	<input type="email" name="email" id="email" placeholder="Email :"/>
 	<br>
-	<label for="password">Password:</label>
-	<input type="password" name="password" id="password"/>
+	<input type="password" name="password" id="password" placeholder="Password :"/>
 	<br>
-	<label for="age">Age:</label>
-	<input type="number" name="age" id="age"/>	
+	<input type="number" name="age" id="age" placeholder="Age :"/>	
 	<br>
 	<input type="submit" value="Valider" class="boutonValid"/>
 </form>
