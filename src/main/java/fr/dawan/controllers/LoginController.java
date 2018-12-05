@@ -37,19 +37,31 @@ public class LoginController {
 	private InterfaceDao<Dodo> dodoDao;
 
 	@PostMapping(value = "/inscription", params = { "pseudo" })
-	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, @RequestParam String password, @RequestParam String password2,  HttpSession session) {
+	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, @RequestParam String password,
+			@RequestParam String password2, HttpSession session) {
+		Joueur joueurFromDB = dao.findByEmail(joueur.getEmail());
+		Joueur joueurFromDB2 = dao.findByPseudo(pseudo);
 		model.addAttribute("pseudo", pseudo);
-		if(password.equals(password2)) {
-		
-		joueur.setPassword(MD5(joueur.getPassword()));
-		joueur = dao.createOrUpdate(joueur);
-		session.setAttribute("joueur", joueur);
-		return "choice";
+		if (joueurFromDB != null) {
+			model.addAttribute("msg", Constantes.EMAIL_EXIST_ERROR);
+			return "inscription";
 		}
-		
-		model.addAttribute("msg", Constantes.PASSWORD_ERROR );
+		if (joueurFromDB2 != null) {
+			model.addAttribute("msg", Constantes.PSEUDO_EXIST_ERROR);
+			return "inscription";
+		}
+
+		if (password.equals(password2)) {
+
+			joueur.setPassword(MD5(joueur.getPassword()));
+			joueur = dao.createOrUpdate(joueur);
+			session.setAttribute("joueur", joueur);
+			return "choice";
+		}
+
+		model.addAttribute("msg", Constantes.PASSWORD_ERROR);
 		return "inscription";
-		
+
 	}
 
 	@GetMapping("/login")
@@ -59,10 +71,10 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model,@RequestParam String password) {
+	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model, @RequestParam String password) {
 		String returnUrl = "login";
 		Joueur joueurFromDb = dao.findByEmail(joueur.getEmail());
-		
+
 		if (joueurFromDb != null && joueur.getEmail() != null && joueur.getPassword() != null && joueur.getEmail() != ""
 				&& joueur.getPassword() != "" && joueurFromDb.getPassword().equals(MD5(password))) {
 			session.setAttribute("joueur", joueurFromDb);

@@ -14,6 +14,8 @@ public class Constantes {
 	public static final String HAPPY_EATER = " s'est régalé et a repris des forces ! ";
 	public static final String SAD_EATER = " a encore faim...";
 	public static final String PASSWORD_ERROR = "Les mots de passe entrés sont différents !";
+	public static final String EMAIL_EXIST_ERROR = "Cet email est déjà utilisé !";
+	public static final String PSEUDO_EXIST_ERROR = "Ce pseudo est déjà pris !";
 
 	
 	
