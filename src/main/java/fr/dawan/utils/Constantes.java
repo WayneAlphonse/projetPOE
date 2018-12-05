@@ -13,6 +13,7 @@ public class Constantes {
 	public static final String SAD_SLEEPER = " est encore fatigué...";
 	public static final String HAPPY_EATER = " s'est régalé et a repris des forces ! ";
 	public static final String SAD_EATER = " a encore faim...";
+	public static final String PASSWORD_ERROR = "Les mots de passe entrés sont différents !";
 
 	
 	

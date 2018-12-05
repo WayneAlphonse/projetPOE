@@ -17,6 +17,7 @@ import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
 import fr.dawan.beans.Nourriture;
+import fr.dawan.utils.Constantes;
 
 @Controller
 public class LoginController {
@@ -36,12 +37,19 @@ public class LoginController {
 	private InterfaceDao<Dodo> dodoDao;
 
 	@PostMapping(value = "/inscription", params = { "pseudo" })
-	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, HttpSession session) {
+	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, @RequestParam String password, @RequestParam String password2,  HttpSession session) {
 		model.addAttribute("pseudo", pseudo);
-
+		if(password.equals(password2)) {
+		
+		joueur.setPassword(MD5(joueur.getPassword()));
 		joueur = dao.createOrUpdate(joueur);
 		session.setAttribute("joueur", joueur);
 		return "choice";
+		}
+		
+		model.addAttribute("msg", Constantes.PASSWORD_ERROR );
+		return "inscription";
+		
 	}
 
 	@GetMapping("/login")
@@ -51,11 +59,12 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model) {
+	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model,@RequestParam String password) {
 		String returnUrl = "login";
 		Joueur joueurFromDb = dao.findByEmail(joueur.getEmail());
+		
 		if (joueurFromDb != null && joueur.getEmail() != null && joueur.getPassword() != null && joueur.getEmail() != ""
-				&& joueur.getPassword() != "" && joueur.getPassword().equals(joueurFromDb.getPassword())) {
+				&& joueur.getPassword() != "" && joueurFromDb.getPassword().equals(MD5(password))) {
 			session.setAttribute("joueur", joueurFromDb);
 			System.out.println(joueurFromDb.getPseudo());
 			model.addAttribute("animal", joueurFromDb.getAnimal());
