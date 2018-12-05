@@ -38,7 +38,7 @@
 </core:forEach>
 </select>
 <label for="dureeDodo">Pendant combien de temps veux-tu faire dormir ton animal ?</label>
-<input type="number" name="dureeDodo" id="dureeDodo" min="1" max="24">heure(s)
+<input type="number" name="dureeDodo" id="dureeDodo" min="1" max="24" required>heure(s)
 <input type="submit" value="Dormir !">
 </form>
 
@@ -50,7 +50,7 @@
 </core:forEach>
 </select>
 <label for="quantiteNourriture">Quelle quantité souhaites-tu donner à ton animal ?</label>
-<input type="number" name="quantiteNourriture" id="quantiteNourriture" min="1" max="1000">
+<input type="number" name="quantiteNourriture" id="quantiteNourriture" min="1" max="1000" required>
 <input type="submit" value="Manger!">
 </form>
 

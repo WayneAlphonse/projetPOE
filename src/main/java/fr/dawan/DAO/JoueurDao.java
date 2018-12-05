@@ -34,7 +34,11 @@ public class JoueurDao implements InterfaceJoueurDao<Joueur> {
 		Session session = sessionFactory.getCurrentSession();
 		TypedQuery<Joueur> query = session
 				.createQuery("SELECT entity FROM Joueur entity WHERE entity.email='" + email + "'", Joueur.class);
-		return query.getSingleResult();
+		List<Joueur> listJoueur = query.getResultList();
+		if(listJoueur.size()==1) {
+			return listJoueur.get(0);
+		}
+		return null;
 
 	}
 
@@ -57,5 +61,25 @@ public class JoueurDao implements InterfaceJoueurDao<Joueur> {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public Joueur findByPseudo(String pseudo) {
+		Session session = sessionFactory.getCurrentSession();
+		TypedQuery<Joueur> query = session
+				.createQuery("SELECT entity FROM Joueur entity WHERE entity.pseudo='" + pseudo + "'", Joueur.class);
+		List<Joueur> listJoueur = query.getResultList();
+		if(listJoueur.size()==1) {
+			return listJoueur.get(0);
+		}
+		return null;
+	}
+
+//	@Override
+//	public Boolean checkEmail(String email) {
+//		Session session = sessionFactory.getCurrentSession();
+//		TypedQuery<Joueur> query = session
+//				.createQuery("SELECT entity FROM Joueur entity WHERE entity.email='" + email + "'", Joueur.class);
+//		return query.getSingleResult() == null;
+//	}
 
 }

@@ -1,13 +1,17 @@
 package fr.dawan.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Joueur extends DbObject {
+	
 	private String nom;
 	private String prenom;
+	@Column(unique=true)
 	private String pseudo;
+	@Column(unique=true)
 	private String email;
 	private String password;
 	private int age = 0;

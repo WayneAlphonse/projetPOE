@@ -33,9 +33,9 @@
 <form action="login" method="post">
 
     <span class="fontawesome-envelope-alt" ></span>
-    <input type="email" name="email" id="email" placeholder="Email"/>
+    <input type="email" name="email" id="email" placeholder="Email" required/>
 	<span class="fontawesome-lock"></span>
-    <input type="password" name="password" id="password" placeholder="Password"/>
+    <input type="password" name="password" id="password" placeholder="Password" required/>
     <input type="submit" value="Connecte-toi !"/>
 
 </form>
