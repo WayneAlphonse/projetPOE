@@ -4,6 +4,7 @@ public class Constantes {
 
 
 	public static final String ANIMAL_AJOUTE = "Animal ajouté !";
+	public static final String ANIMAL_AJOUTE_ERROR = "Animal pas ajouté !";
 	public static final String JOUET_CREE = "Jouet crée!";
 	public static final String DODO_CREE = "Dodo crée!";
 	public static final String NOURRITURE_CREE = "Nourriture crée!";

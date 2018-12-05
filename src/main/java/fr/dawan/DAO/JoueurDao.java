@@ -34,6 +34,7 @@ public class JoueurDao implements InterfaceJoueurDao<Joueur> {
 		Session session = sessionFactory.getCurrentSession();
 		TypedQuery<Joueur> query = session
 				.createQuery("SELECT entity FROM Joueur entity WHERE entity.email='" + email + "'", Joueur.class);
+		//on met le resultat dans une liste car si on utilise un singleResult, il faut toujours qu'il y ait 1 résultat et un seul sinon on renvoie une erreur
 		List<Joueur> listJoueur = query.getResultList();
 		if(listJoueur.size()==1) {
 			return listJoueur.get(0);

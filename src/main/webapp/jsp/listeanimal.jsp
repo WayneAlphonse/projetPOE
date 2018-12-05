@@ -17,8 +17,7 @@
 
 
 <core:forEach var ="animal" items="${ listeAnimals }" >		
-		<div>
-		<img alt="" src="${animal.nomImage }" width="200">
+		<div><img src="upload/${ animal.nomImage }" width="200"/>
 		<p>Nom de l'animal</p>
 		<p>${animal.nom }</p>
 		<p>Couleur de l'animal</p>
