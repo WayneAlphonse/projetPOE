@@ -23,21 +23,21 @@
 
 <form class="formInscription" method="post" action="inscription">
 <h2 class="titreH2">Inscris-toi!</h2>
-	<input type="text" name="nom" id="nom" placeholder="Nom :" required/>
+	<input type="text" name="nom" id="nom" placeholder="Nom :" required value="${ joueur.nom }"/>
 	<br>
-	<input type="text" name="prenom" id="prenom" placeholder="Prénom :" required/>
+	<input type="text" name="prenom" id="prenom" placeholder="Prénom :" required value="${joueur.prenom }"/>
 	<br>
-	<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo :" required/>
+	<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo :" required value="${joueur.pseudo }"/>
 	<br>
-	<input type="email" name="email" id="email" placeholder="Email :" required/>
+	<input type="email" name="email" id="email" placeholder="Email :" required value="${joueur.email }"/>
 	<br>
-	<input type="password" name="password" id="password" placeholder="Password :" required/>
+	<input type="password" name="password" id="password" placeholder="Password :" required value="${joueur.password }"/>
 	<br>
-	<input type="password" name="password2" id="password" placeholder="Vérifie ton password :" required/>
+	<input type="password" name="password2" id="password" placeholder="Vérifie ton password :" required />
 	<br>
-	<input type="number" name="age" id="age" placeholder="Age :" required/>	
+	<input type="number" name="age" id="age" placeholder="Age :" required value="${joueur.age }"/>	
 	<br>
-	<input type="submit" value="Valider" class="boutonValid"/>
+	<input type="submit" value="Valider" class="boutonValid" />
 </form>
 <form action="login" method="get" class="formLogin">
 	Déjà inscrit ?

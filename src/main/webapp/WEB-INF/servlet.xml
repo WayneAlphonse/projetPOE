@@ -62,4 +62,19 @@
 		<!-- 10Mo valeur en ecriture sur le disque-->
 	
 	</bean>
+	
+	<mvc:interceptors>
+	<bean id="LoginInterceptor" class="fr.dawan.utils.LoginInterceptor">
+		<property name="ignoreList">
+			<list>
+				<value>/login</value>
+				<value>/inscription</value>
+				<value>/css</value>
+				<value>/uploadimage</value>
+				<value>/creaanimal</value>
+				<value>/creaobjet</value>
+			</list>
+		</property>
+	</bean>
+	</mvc:interceptors>
 </beans>
