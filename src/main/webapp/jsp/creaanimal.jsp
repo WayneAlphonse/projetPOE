@@ -32,8 +32,8 @@
 	<label for="couleur">Couleur :</label>
 	<input type="text" name="couleur" id="couleur"/>
 	<br>
-	<label for="nomImage">Url de l'image Animal</label>
-	<input type="text" name="nomImage" id="nomImage"/>
+	<!-- <label for="nomImage">Url de l'image Animal</label>
+	<input type="upload" name="nomImage" id="nomImage"/> -->
 	<label for="typeAnimal">Type de l'animal :</label>
 	<select name="typeAnimal">
 	<core:forEach var= "typeAnimal" items="<%=TypeAnimal.values() %>"> 

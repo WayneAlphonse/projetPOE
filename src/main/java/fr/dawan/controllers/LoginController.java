@@ -36,32 +36,50 @@ public class LoginController {
 	@Qualifier("hibernateDao4")
 	private InterfaceDao<Dodo> dodoDao;
 
+	@GetMapping(value = "/inscription")
+	public String showInscription() {
+
+		return "inscription";
+	}
+
 	@PostMapping(value = "/inscription", params = { "pseudo" })
 	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, @RequestParam String password,
 			@RequestParam String password2, HttpSession session) {
+
+		String returnUrl = "inscription";
+		boolean isOk = true;
+
 		Joueur joueurFromDB = dao.findByEmail(joueur.getEmail());
 		Joueur joueurFromDB2 = dao.findByPseudo(pseudo);
 		model.addAttribute("pseudo", pseudo);
+
 		if (joueurFromDB != null) {
 			model.addAttribute("msg", Constantes.EMAIL_EXIST_ERROR);
-			return "inscription";
+			isOk = false;
 		}
-		if (joueurFromDB2 != null) {
+
+		if (isOk && joueurFromDB2 != null) {
 			model.addAttribute("msg", Constantes.PSEUDO_EXIST_ERROR);
-			return "inscription";
+			isOk = false;
 		}
 
-		if (password.equals(password2)) {
-
-			joueur.setPassword(MD5(joueur.getPassword()));
-			joueur = dao.createOrUpdate(joueur);
-			session.setAttribute("joueur", joueur);
-			return "choice";
+		if (isOk) {
+			if (password.equals(password2)) {
+	
+				joueur.setPassword(MD5(joueur.getPassword()));
+				joueur = dao.createOrUpdate(joueur);
+				session.setAttribute("joueur", joueur);
+				returnUrl = "choice";
+			} else {
+				model.addAttribute("msg", Constantes.PASSWORD_ERROR);
+			}
+		}
+		
+		if (!isOk) {
+			model.addAttribute("joueur", joueur);
 		}
 
-		model.addAttribute("msg", Constantes.PASSWORD_ERROR);
-		return "inscription";
-
+		return returnUrl;
 	}
 
 	@GetMapping("/login")

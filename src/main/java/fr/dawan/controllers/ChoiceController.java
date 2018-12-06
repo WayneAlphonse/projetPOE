@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,9 +39,15 @@ public class ChoiceController {
 	@Qualifier("hibernateDao4")
 	private InterfaceDao<Dodo> dodoDao;
 
+	@GetMapping(value = "/choice")
+	public String redirectListAnimalGet(Model model, @RequestParam("typeAnimal") TypeAnimal typeAnimal) {
+		model.addAttribute("listeAnimals", daoAnimal.findByEnum(typeAnimal));
+
+		return "listeanimal";
+	}
+	
 	@PostMapping(value = "/choice")
 	public String redirectListAnimal(Model model, @RequestParam("typeAnimal") TypeAnimal typeAnimal) {
-
 		model.addAttribute("listeAnimals", daoAnimal.findByEnum(typeAnimal));
 
 		return "listeanimal";
