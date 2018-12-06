@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'kindergartenmedium';
+    src: url('kindergarten-webfont.woff2') format('woff2'),
+         url('kindergarten-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'chickadeeregular';
+    src: url('chickadee_free-webfont.woff2') format('woff2'),
+         url('chickadee_free-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'candy_beansregular';
+    src: url('candy_beans-webfont.woff2') format('woff2'),
+         url('candy_beans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('poppins-regular-webfont.woff2') format('woff2'),
+         url('poppins-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'orange_juiceregular';
+    src: url('orange_juice_2.0-webfont.woff2') format('woff2'),
+         url('orange_juice_2.0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.conteneur{
+	display: flex;
+	flex-wrap : wrap;
+	justify-content : center;
+}
+div.img img {
+	width: 100%;
+	height: auto;
+}
+
+
+@media only screen and (max-width: 700px) {
+	.conteneur {
+		width: 49.99999%;
+		margin: 6px 0;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.conteneur {
+		width: 100%;
+	}
+}
+
+body{
+	
+	background-color: #f7f4f4;
+}
+
+h1{
+	 font-family: 'orange_juiceregular';
+	 font-size: 100px;
+	 color:purple;
+}
+
+.corps{
+	
+	font-family: 'kindergartenmedium';
+	 font-size : 30px;
+}
+.titre{
+	font-size: 40px;
+}
+.button{
+		color: #955653;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'poppinsregular';
+}
+.choix{
+	olor: #955653;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'poppinsregular';
+	
+}

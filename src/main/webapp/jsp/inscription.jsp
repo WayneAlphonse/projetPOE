@@ -37,7 +37,7 @@
 	<br>
 	<input type="number" name="age" id="age" placeholder="Age :" required value="${joueur.age }"/>	
 	<br>
-	<input type="submit" value="Valider" class="boutonValid" />
+	<input type="submit" value="Valider" class="boutonValid"/>
 </form>
 <form action="login" method="get" class="formLogin">
 	Déjà inscrit ?
