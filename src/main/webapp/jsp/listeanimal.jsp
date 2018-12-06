@@ -18,7 +18,7 @@
 
 <core:forEach var ="animal" items="${ listeAnimals }" >	
 	<div class="responsive">
-		<div class="gallery"><img src="upload/${ animal.nomImage }" width="200"/>
+		<div class="gallery"><img src="${ animal.nomImage }" width="200"/>
 		<div class="desc">
 		<p><strong>${animal.nom }</strong></p>
 		<p>${animal.couleur }</p>
