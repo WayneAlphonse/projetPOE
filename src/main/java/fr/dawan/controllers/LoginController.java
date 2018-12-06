@@ -1,9 +1,12 @@
 package fr.dawan.controllers;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +20,13 @@ import fr.dawan.beans.Dodo;
 import fr.dawan.beans.Jeux;
 import fr.dawan.beans.Joueur;
 import fr.dawan.beans.Nourriture;
-import fr.dawan.utils.Constantes;
+
 
 @Controller
 public class LoginController {
+	@Autowired
+	private MessageSource messageSource;
+	
 	@Autowired
 	private InterfaceJoueurDao<Joueur> dao;
 
@@ -43,7 +49,7 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "/inscription", params = { "pseudo" })
-	public String addPlayer(Model model, Joueur joueur, @RequestParam String pseudo, @RequestParam String password,
+	public String addPlayer(Model model, Locale locale,Joueur joueur, @RequestParam String pseudo, @RequestParam String password,
 			@RequestParam String password2, HttpSession session) {
 
 		String returnUrl = "inscription";
@@ -52,14 +58,17 @@ public class LoginController {
 		Joueur joueurFromDB = dao.findByEmail(joueur.getEmail());
 		Joueur joueurFromDB2 = dao.findByPseudo(pseudo);
 		model.addAttribute("pseudo", pseudo);
+		
+	
 
 		if (joueurFromDB != null) {
-			model.addAttribute("msg", Constantes.EMAIL_EXIST_ERROR);
+			model.addAttribute("msg", messageSource.getMessage("EMAIL_EXIST_ERROR", null, locale));
 			isOk = false;
 		}
 
 		if (isOk && joueurFromDB2 != null) {
-			model.addAttribute("msg", Constantes.PSEUDO_EXIST_ERROR);
+			
+			model.addAttribute("msg", messageSource.getMessage("PSEUDO_EXIST_ERROR", null, locale));
 			isOk = false;
 		}
 
@@ -71,7 +80,8 @@ public class LoginController {
 				session.setAttribute("joueur", joueur);
 				returnUrl = "choice";
 			} else {
-				model.addAttribute("msg", Constantes.PASSWORD_ERROR);
+				
+				model.addAttribute("msg", messageSource.getMessage("PASSWORD_ERROR", null, locale));
 			}
 		}
 		
@@ -89,7 +99,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model, @RequestParam String password) {
+	public ModelAndView checkLogin(Joueur joueur, HttpSession session, Model model, Locale locale,@RequestParam String password) {
 		String returnUrl = "login";
 		Joueur joueurFromDb = dao.findByEmail(joueur.getEmail());
 

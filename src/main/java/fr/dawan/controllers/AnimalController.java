@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,13 +18,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import fr.dawan.DAO.InterfaceAnimalDao;
 import fr.dawan.beans.Animal;
-import fr.dawan.utils.Constantes;
+
 
 @Controller
 public class AnimalController {
 	@Autowired
 	@Qualifier("hibernateDao2")
 	private InterfaceAnimalDao<Animal> daoAnimal;
+	
+	@Autowired
+	private MessageSource messageSource;
 
 	@PostMapping("/creaanimal")
 	public String createAnimal(Animal animal, Model model) {
@@ -69,10 +73,12 @@ public class AnimalController {
 
 				// MaJ en BDD
 				daoAnimal.createOrUpdate(animal);
-				model.addAttribute("msg", Constantes.ANIMAL_AJOUTE);
+				
+				model.addAttribute("msg", messageSource.getMessage("ANIMAL_AJOUTE", null, locale));
 			}
 			else {
-				model.addAttribute("msg", Constantes.ANIMAL_AJOUTE_ERROR);
+				
+				model.addAttribute("msg", messageSource.getMessage("ANIMAL_AJOUTE_ERROR", null, locale));
 			}
 
 			model.addAttribute("listeAnimals", daoAnimal.findAll());
@@ -83,5 +89,8 @@ public class AnimalController {
 			return "listeanimal";
 		}
 	}
+	
+	
+	}
 
-}
+
