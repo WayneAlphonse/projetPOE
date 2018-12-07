@@ -16,10 +16,11 @@
 <body>
 <h2>Choisis un animal parmi ceux présentés :</h2>
 
+<div class="responsive">
 <core:forEach var ="animal" items="${ listeAnimals }" >	
-	<div class="responsive">
-		<div class="gallery"><img src="${ animal.nomImage }" width="200"/>
-		<div class="desc">
+	
+		<div class="gallery"><img src="${ animal.nomImage }" width="200px"/>
+		
 		<p><strong>${animal.nom }</strong></p>
 		<p>${animal.couleur }</p>
 		<p>Taux de gourmandise :</p>
@@ -27,16 +28,16 @@
 		<p>Taux de sportif :</p>
 		<p>${animal.sportif }</p>
 		<p>Taux de marmotte :</p>
-		<p>${animal.marmotte }</p></div>
+		<p>${animal.marmotte }</p>
 		<form action="animaljoueur" method="post">
 					<input type="hidden" name= "id" value= "${animal.id}"/>
 					<input type="submit" value="Je choisis celui-ci !" class="button"/>
 				</form></div>
-		</div>	
-		</div>
+		
+	
 		
 		</core:forEach>
-
+</div>	
 ${ msg }
 </body>
 </html>

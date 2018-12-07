@@ -21,7 +21,7 @@
 <div class="corps">
 <h1>Bienvenue ${ sessionScope.joueur.pseudo } sur la page de ton Animal !</h1>
 
-<div class="img"><img alt="" src=" ${animal.nomImage}" width="200"></div>
+<div class="img"><img alt="" src=" ${animal.nomImage}" ></div>
 
 <form action="calculjeu" method="post">
 <p class="titre"><strong> Choisis un jeu : </strong></p>
@@ -37,7 +37,7 @@
 
 
 <form action="calculdodo" method="post">
-<p>Choisis un lieu pour faire dormir ton animal :</p>
+<p><strong>Choisis un lieu pour faire dormir ton animal :</strong></p>
 <select name="lieu" class="choix">
 <core:forEach var="dodo" items="${ listeDodo }">
 <option>${ dodo.lieu }</option>
@@ -49,7 +49,7 @@
 </form>
 
 <form action="calculnourriture" method="post">
-<p>Choisis quelle nourriture ton animal va manger :</p>
+<p><strong>Choisis quelle nourriture ton animal va manger :</strong></p>
 <select name="typeNourriture" class="choix">
 <core:forEach var="nourriture" items="${ listeNourriture }">
 <option>${ nourriture.typeNourriture }</option>
